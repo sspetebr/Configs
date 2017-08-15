@@ -1,0 +1,49 @@
+align=center
+markup=none
+color=#ffffff
+separator=false
+separator_block_width=30
+
+[mediaplayer]
+label=♬
+command=$SCRIPT_DIR/mediaplayer
+instance=spotify
+interval=5
+signal=10
+
+[inspace]
+label= 
+command=$SCRIPT_DIR/inspace
+interval=3600
+min_width= 0
+
+[backlight]
+markup=pango
+command=$SCRIPT_DIR/backlight -cd "#ffffff" -f "&#xf0eb;  {percent}%"
+instance=intel_backlight
+interval=2
+
+[volume]
+markup=pango
+command=$SCRIPT_DIR/volume -cd "#ffffff" -fe "{muted}" "=" "no" "&#x1f50a; {volume}%" -fe "{muted}" "=" "yes" "&#x1f507;"
+interval=1
+
+[datetime]
+label= 
+command=date "+%Y-%m-%d %H:%M"
+interval=1
+
+[wifi]
+markup=pango
+command=$SCRIPT_DIR/wifi -cd "#ffffff" -cg "#ffffff" -f "  {ssid} ({status})" -i wlp2s0
+interval=5
+
+[shutdown_menu]
+full_text=Ω
+command=$SCRIPT_DIR/shutdown_menu -c
+
+[batterybar]
+command=$SCRIPT_DIR/batterybar
+interval=5
+markup=pango
+min_width=  (100%) 

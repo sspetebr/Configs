@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+import urllib.request as ur
+import json
+import time
+
+ready = None
+tries = 0;
+while not ready and (tries < 10):
+    try:
+        resp = ur.urlopen("http://api.open-notify.org/astros.json")
+        resp = json.loads(resp.read().decode("UTF-8"))
+
+        ready = resp["number"]
+    except:
+        time.sleep(3)
+        tries += 1
+
+if ready:
+    print(ready)
+else:
+    print("...")
